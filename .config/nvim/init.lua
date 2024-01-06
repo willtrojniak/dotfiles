@@ -24,6 +24,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
-require("lazy").setup("plugins")
+
+local lazyOptions = {
+  defaults = {
+    lazy = true,
+  },
+  install = {
+    colorscheme = { "catppuccin" }
+  },
+}
+
+require("lazy").setup("plugins", lazyOptions)
 
 
