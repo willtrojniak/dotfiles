@@ -28,7 +28,7 @@ echo >> $SH # Create .bashrc or .zshrc
 echo "Source the following shell configuration files?"
 for file in shell/*.sh; do
   if ask "$file"; then
-    echo "Yes selected"
+    echo "source $(realpath "$file")" >> $SH
   fi
 done
 
