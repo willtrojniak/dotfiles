@@ -47,11 +47,18 @@ fi
 # Loop through directories in config folder and create symlinks
 echo "Create symlinks for the following folders in .config directory?"
 for dir in $(find config -mindepth 1 -maxdepth 1 -type d); do
-  if ask ".${dir}"; then
+  if ask "$(basename "$dir")"; then
+	  source="$(realpath "$dir")"
+	  target="${HOME}/.config/$(basename "$dir")"
+	  
+    # Remove files or directories at the target location if they exist
+    if [ -e "$target" ]; then
+		  rm -rf "$target"
+	  fi
+
     # Create the symlink
-    # Note that it would be simpler to add a period and append dir
-    # However, this would break if the config folders were ever moved from ./config
-    ln --force -s "$(realpath "$dir")" "${HOME}/.config/$(basename "$dir")"
+    ln --force -s "$source" "$target"
+  
   fi
 done
 : '
