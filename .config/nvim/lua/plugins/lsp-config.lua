@@ -1,3 +1,13 @@
+local lspServers = {
+
+  "lua_ls",
+  "eslint",
+  "tsserver",
+  "tailwindcss",
+  "pylsp",
+  "ltex",
+}
+
 return {
   {
     "williamboman/mason.nvim",
@@ -9,13 +19,7 @@ return {
       "williamboman/mason.nvim"
     },
     opts = {
-      ensure_installed = {
-        "lua_ls",
-        "eslint",
-        "tsserver",
-        "tailwindcss",
-        "pylsp",
-      }
+      ensure_installed = lspServers,
     }
   },
   {
@@ -32,11 +36,9 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      lspconfig.lua_ls.setup({capabilities = capabilities})
-      lspconfig.eslint.setup({capabilities = capabilities})
-      lspconfig.tsserver.setup({capabilities = capabilities})
-      lspconfig.tailwindcss.setup({capabilities = capabilities})
-      lspconfig.pylsp.setup({capabilities = capabilities})
+      for _, lspserver in ipairs(lspServers) do
+        lspconfig[lspserver].setup({capabilities = capabilities})
+      end
     end
   }
 }
