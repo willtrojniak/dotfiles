@@ -15,14 +15,8 @@ function ask() {
 
 }
 
-# Check what shell is being used
-SH="${HOME}/.bashrc"
-ZSHRC="${HOME}/.zshrc"
-if [ -f "$ZSHRC" ]; then
-	SH="$ZSHRC"
-fi
-
-echo >> $SH # Create .bashrc or .zshrc
+# Path to .bashrc
+SH_CONF_FILE="${HOME}/.bashrc"
 
 # Source the files in ./shell/ in shell config file?
 echo "Source the following shell configuration files?"
