@@ -1,0 +1,13 @@
+# Load Color Scheme
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+
+env:
+  TERM: xterm-256color
+
+window:
+  padding:
+    x: 12
+    y: 8
+  decorations: None
+  opacity: 0.98
