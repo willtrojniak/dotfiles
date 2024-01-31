@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Based on https://github.com/bartekspitza/dotfiles/
+# Originally inspired by on https://github.com/bartekspitza/dotfiles/
+# Additional inspiration from 
 
 # Ask Y/n
 function ask() {
@@ -15,6 +16,45 @@ function ask() {
 
 }
 
+function backup_config_file() {
+  now=$(date "+%y_%m_%d_%T")
+  cp "${HOME}/.config" "${HOME}/backup_${now}_.config"
+}
+
+function backup_config_folder() {
+  now=$(date "+%y_%m_%d_%T")
+  cp -r "${HOME}/.config" "${HOME}/backup_${now}_.config"
+}
+
+if [ -f "${HOME}/.config" ]; then
+  echo "A conflicting .config file already exists at ${HOME}/.config!"
+  if ask "Backup and remove the .config file?"; then
+    backup_config_file
+  else
+    echo "Failed to symlink .config folders. A conflicting .config file exists." >&2
+    exit 1
+  fi
+elif [ ! -e "${HOME}/.config" ]; then
+  echo "Creating .config directory at ${HOME}"
+  mkdir "${HOME}/.config"
+elif [ -d "${HOME}/.config" ]; then
+  echo "A conflicting .config directory already exists at ${HOME}/.config!"
+  if ask "Backup the .config directory?"; then
+    backup_config_folder
+  fi
+fi
+
+# Loop through directories in config folder and create symlinks
+echo "Create symlinks for the following folders in .config directory?"
+for dir in $(find config -mindepth 1 -maxdepth 1 -type d); do
+  if ask ".${dir}"; then
+    # Create the symlink
+    # Note that it would be simpler to add a period and append dir
+    # However, this would break if the config folders were ever moved from ./config
+    ln --force -s "$(realpath "$dir")" "${HOME}/.config/$(basename "$dir")"
+  fi
+done
+: '
 # Path to .bashrc
 SH_CONF_FILE="${HOME}/.bashrc"
 
@@ -28,7 +68,7 @@ done
 
 # Create symlinks for the following dotfiles?
 echo "Create symlinks for the following dotfiles?"
-for file in $(find .* -maxdepth 0 -type f -name '.*' ! -name '.DS_Store'); do
+for file in $(find .* -maxdepth 0 -type f -name ".*" ! -name ".DS_Store"); do
   if ask "$file"; then
     ln -s "$(realpath "$file")" ~/${file}
   fi
@@ -36,8 +76,9 @@ done
 
 # Create symlinks for the following directories?
 echo "Create symlinks for the following directories?"
-for dir in $(find .* -maxdepth 0 -type d ! -name '.' ! -name '..' ! -name '.git');do
+for dir in $(find .* -maxdepth 0 -type d ! -name "." ! -name ".." ! -name ".git");do
   if ask "$dir"; then
     ln -s "$(realpath "$dir")" ~/${dir}
   fi
-done
+done 
+'
