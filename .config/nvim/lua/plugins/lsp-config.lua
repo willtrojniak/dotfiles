@@ -32,6 +32,22 @@ return {
     keys = {
       { "K", vim.lsp.buf.hover, desc = "Hover" },
       { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Actions" },
+      { "<leader>co", vim.diagnostic.open_float, desc = "Open Float" },
+      { "gD", vim.lsp.buf.declaration, desc = "Go to declaration" },
+      { "gd", vim.lsp.buf.definition, desc = "Go to definition" },
+      { "gi", vim.lsp.buf.implementation, desc = "Go to implementation" }
+    },
+    opts = {
+      diagnostics = {
+        underline = true,
+        update_in_insert = true,
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+        },
+        severity_sort = true,
+      }
     },
     config = function()
       local lspconfig = require("lspconfig")
