@@ -57,7 +57,7 @@ for dir in $(find config -mindepth 1 -maxdepth 1 -type d); do
 	  fi
 
     # Create the symlink
-    ln --force -s "$source" "$target"
+    ln -s -f "$source" "$target"
   
   fi
 done
@@ -77,7 +77,7 @@ done
 echo "Create symlinks for the following dotfiles?"
 for file in $(find .* -maxdepth 0 -type f -name ".*" ! -name ".DS_Store"); do
   if ask "$file"; then
-    ln -s "$(realpath "$file")" ~/${file}
+    ln  -s "$(realpath "$file")" ~/${file}
   fi
 done
 

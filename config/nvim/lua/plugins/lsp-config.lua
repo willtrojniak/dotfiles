@@ -6,6 +6,7 @@ local lspServers = {
   "tailwindcss",
   "pylsp",
   "ltex",
+  "gopls",
 }
 
 return {
