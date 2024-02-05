@@ -7,7 +7,33 @@ return {
     "MunifTanjim/nui.nvim",
   },
   opts = {
-    close_if_last_window = false, -- close Neo-Tree if it is the last buffer left in the tab
+    close_if_last_window = true, -- close Neo-Tree if it is the last buffer left in the tab
+    popup_border_style = "rounded",
+    default_component_configs = {
+      diagnostics = {
+        symbols = {
+          hint = "󰌵",
+          info = "",
+          warn = "",
+          error = "",
+        },
+      },
+      git_status = {
+        symbols = {
+          -- Change type
+          added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+          modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+          deleted   = "✖",-- this can only be used in the git_status source
+          renamed   = "󰁕",-- this can only be used in the git_status source
+          -- Status type
+          untracked = "?",
+          ignored   = "",
+          unstaged  = "󰄱",
+          staged    = "",
+          conflict  = "",
+        }
+      },
+    },
     filesystem = {
       filtered_items = {
         visible = true,
