@@ -28,6 +28,7 @@ return {
     dependencies = {
       "mason.nvim",
       "mason-lspconfig.nvim",
+      "folke/neodev.nvim"
     },
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     keys = {
