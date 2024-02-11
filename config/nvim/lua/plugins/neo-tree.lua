@@ -9,6 +9,10 @@ return {
   opts = {
     close_if_last_window = true, -- close Neo-Tree if it is the last buffer left in the tab
     popup_border_style = "rounded",
+    enable_git_status = true,
+    enable_diagnostics = true,
+    enable_normal_mode_for_inputs = true,
+    sort_case_insensitive = true,
     default_component_configs = {
       diagnostics = {
         symbols = {
@@ -36,12 +40,16 @@ return {
     },
     filesystem = {
       filtered_items = {
-        visible = true,
-
+        visible = false,
+        hide_dotfiles = false,
+        hide_gitignored = false,
         never_show = {
           ".DS_Store",
-        }
-      }
+        },
+      },
+      follow_current_file = {
+        enabled = true,
+      },
     },
   },
   cmd = "Neotree",
