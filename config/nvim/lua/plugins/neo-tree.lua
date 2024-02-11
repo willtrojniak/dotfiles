@@ -56,8 +56,9 @@ return {
   keys = function()
     local neotree = require("neo-tree.command")
     return{
-      { '<leader>fe', function() neotree.execute({}) end, desc = "Open File Tree" },
-      { '<leader>fE', function() neotree.execute({toggle=true}) end, desc = "Toggle File Tree" }
+      { '<leader>fe', function() neotree.execute({action='focus', source='filesystem', position='float', reveal=true}) end, desc = "Open File Tree Explorer" },
+      { '<leader>fg', function() neotree.execute({action='focus', source='git_status', position='float', reveal=true}) end, desc = "Open Git Tree Explorer" },
+      { '<leader>fb', function() neotree.execute({action='focus', source='buffers', position='float', reveal=true}) end, desc = "Open Buffer Explorer"},
     }
   end,
 }
