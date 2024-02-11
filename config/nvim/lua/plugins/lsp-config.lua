@@ -31,14 +31,6 @@ return {
       "folke/neodev.nvim"
     },
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-    keys = {
-      { "K", vim.lsp.buf.hover, desc = "Hover" },
-      { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Actions" },
-      { "<leader>co", vim.diagnostic.open_float, desc = "Open Float" },
-      { "gD", vim.lsp.buf.declaration, desc = "Go to declaration" },
-      { "gd", vim.lsp.buf.definition, desc = "Go to definition" },
-      { "gi", vim.lsp.buf.implementation, desc = "Go to implementation" }
-    },
     opts = {
       diagnostics = {
         underline = true,
@@ -57,6 +49,22 @@ return {
       for _, lspserver in ipairs(lspServers) do
         lspconfig[lspserver].setup({capabilities = capabilities})
       end
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        callback = function(ev)
+          local opts = { buffer = ev.buf }
+
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts);
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts);
+          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts);
+          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts);
+          vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts);
+          vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts);
+          vim.keymap.set('n', '<leader>co', vim.diagnostic.open_float, opts);
+
+        end,
+      })
     end
   }
 }
