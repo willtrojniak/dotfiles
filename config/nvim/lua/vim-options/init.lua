@@ -2,6 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.vimtex_view_method = 'zathura'
+
 local set = vim.opt
 
 -- Enable relative line numbers
