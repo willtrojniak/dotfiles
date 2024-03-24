@@ -164,9 +164,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-workspace $ws10 output DP-0
+workspace $ws2 output nonprimary
+workspace $ws10 output nonprimary
 
-
+assign [class="^Google-chrome$"] → number $ws2
 assign [class="^Spotify$"] → number $ws10
 
 # reload the configuration file
@@ -281,5 +282,7 @@ bar {
 }
 
 exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id xinput set-prop "Logitech USB Receiver" "libinput Accel Profile Enabled" 0, 1
 exec --no-startup-id picom -b
 exec --no-startup-id spotify
+
