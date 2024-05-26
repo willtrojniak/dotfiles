@@ -1,14 +1,3 @@
-local lspServers = {
-
-  "lua_ls",
-  "eslint",
-  "tsserver",
-  "tailwindcss",
-  "pylsp",
-  "ltex",
-  "gopls",
-}
-
 return {
   {
     "williamboman/mason.nvim",
@@ -20,8 +9,15 @@ return {
       "williamboman/mason.nvim"
     },
     opts = {
-      ensure_installed = lspServers,
-    }
+      -- ensure_installed = lspServers,
+      automatic_installation = true,
+      handlers = {
+        function(server_name)
+          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          require("lspconfig")[server_name].setup({capabilities = capabilities})
+        end
+      }
+    },
   },
   {
     "neovim/nvim-lspconfig",
@@ -44,12 +40,6 @@ return {
       }
     },
     config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      for _, lspserver in ipairs(lspServers) do
-        lspconfig[lspserver].setup({capabilities = capabilities})
-      end
-
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
