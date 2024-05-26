@@ -281,8 +281,18 @@ bar {
 	}
 }
 
+# Restore desktop wallpapers
 exec_always --no-startup-id nitrogen --restore
+
+# Set primary monitor
+exec --no-startup-id xrandr --output HDMI-1 --primary --right-of DP-1
+
+# Disable mouse acceleration
 exec --no-startup-id xinput set-prop "Logitech USB Receiver" "libinput Accel Profile Enabled" 0, 1
+
+# Transparent windows
 exec --no-startup-id picom -b
+
+# Open Spotify on startup
 exec --no-startup-id spotify
 
