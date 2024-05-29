@@ -1,4 +1,4 @@
-if [ command -v starship ]; then
+if command -v starship >& /dev/null; then
   # TODO Change between bash and zsh
   eval "$(starship init bash)"
 else
