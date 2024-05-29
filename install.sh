@@ -3,11 +3,20 @@
 # Originally inspired by on https://github.com/bartekspitza/dotfiles/
 # Additional inspiration from 
 
-# Ask Y/n
+# Ask Y/N
 function ask() {
-  read -p "$1 (Y/n): " resp
+  prompt="$1"
+  default="$2"
+  if [ "$default" = "y" ]; then
+    options="Y/n"
+    default="y"
+  else
+    options="y/N"
+    default="n"
+  fi
+  read -p "$prompt ($options): " resp
     if [ -z "$resp" ]; then
-      response_lc="y" # empty defaults to "y"
+      response_lc="$default" # empty defaults
     else
       response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
     fi
@@ -28,7 +37,7 @@ function backup_config_folder() {
 
 if [ -f "${HOME}/.config" ]; then
   echo "A conflicting .config file already exists at ${HOME}/.config!"
-  if ask "Backup and remove the .config file?"; then
+  if ask "Backup and remove the .config file?" "y"; then
     backup_config_file
   else
     echo "Failed to symlink .config folders. A conflicting .config file exists." >&2
@@ -39,15 +48,16 @@ elif [ ! -e "${HOME}/.config" ]; then
   mkdir "${HOME}/.config"
 elif [ -d "${HOME}/.config" ]; then
   echo "A conflicting .config directory already exists at ${HOME}/.config!"
-  if ask "Backup the .config directory?"; then
+  if ask "Backup the .config directory?" "y"; then
     backup_config_folder
   fi
 fi
 
 # Loop through directories in config folder and create symlinks
+# TODO Add option to unlink linked directories
 echo "Create symlinks for the following folders in .config directory?"
 for dir in $(find config -mindepth 1 -maxdepth 1 -type d); do
-  if ask "$(basename "$dir")"; then
+  if ask "$(basename "$dir")" "n"; then
 	  source="$(realpath "$dir")"
 	  target="${HOME}/.config/$(basename "$dir")"
 	  
@@ -61,17 +71,38 @@ for dir in $(find config -mindepth 1 -maxdepth 1 -type d); do
   
   fi
 done
-: '
-# Path to .bashrc
-SH_CONF_FILE="${HOME}/.bashrc"
 
-# Source the files in ./shell/ in shell config file?
+# Path to shell config file. i.e .bashrc, .zshrc, etc
+SH_CONF_FILE=""
+if [ $ZSH_VERSION ]; then
+  echo "Detected zsh"
+  SH_CONF_FILE="${HOME}/.zsh_profile"
+elif [ $BASH_VERSION ]; then
+  echo "Detected bash"
+  SH_CONF_FILE="${HOME}/.bash_profile"
+else
+  echo "ERROR: Only supports zsh and bash as of right now" >&2
+  exit 1
+fi
+
+
 echo "Source the following shell configuration files?"
 for file in shell/*.sh; do
-  if ask "$file"; then
-    echo "source $(realpath "$file")" >> $SH
+  filepath="$(realpath $file)"
+  line=". $filepath"
+  if (! grep -Fq "$line" $SH_CONF_FILE) && ask "$file" "n"; then
+    echo "" >> $SH_CONF_FILE
+    echo "if [ -f $filepath ]; then" >> $SH_CONF_FILE
+    echo "  $line" >> $SH_CONF_FILE
+    echo "fi" >> $SH_CONF_FILE
   fi
 done
+
+
+
+: '
+
+# Source the files in ./shell/ in shell config file?
 
 # Create symlinks for the following dotfiles?
 echo "Create symlinks for the following dotfiles?"
