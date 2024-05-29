@@ -76,10 +76,10 @@ done
 SH_CONF_FILE=""
 if [ $ZSH_VERSION ]; then
   echo "Detected zsh"
-  SH_CONF_FILE="${HOME}/.zsh_profile"
+  SH_CONF_FILE="${HOME}/.zshrc"
 elif [ $BASH_VERSION ]; then
   echo "Detected bash"
-  SH_CONF_FILE="${HOME}/.bash_profile"
+  SH_CONF_FILE="${HOME}/.bashrc"
 else
   echo "ERROR: Only supports zsh and bash as of right now" >&2
   exit 1
@@ -90,33 +90,10 @@ echo "Source the following shell configuration files?"
 for file in shell/*.sh; do
   filepath="$(realpath $file)"
   line=". $filepath"
-  if (! grep -Fq "$line" $SH_CONF_FILE) && ask "$file" "n"; then
+  if ([ ! -f $SH_CONF_FILE ] || (! grep -Fq "$line" $SH_CONF_FILE)) && ask "$file" "n"; then
     echo "" >> $SH_CONF_FILE
     echo "if [ -f $filepath ]; then" >> $SH_CONF_FILE
     echo "  $line" >> $SH_CONF_FILE
     echo "fi" >> $SH_CONF_FILE
   fi
 done
-
-
-
-: '
-
-# Source the files in ./shell/ in shell config file?
-
-# Create symlinks for the following dotfiles?
-echo "Create symlinks for the following dotfiles?"
-for file in $(find .* -maxdepth 0 -type f -name ".*" ! -name ".DS_Store"); do
-  if ask "$file"; then
-    ln  -s "$(realpath "$file")" ~/${file}
-  fi
-done
-
-# Create symlinks for the following directories?
-echo "Create symlinks for the following directories?"
-for dir in $(find .* -maxdepth 0 -type d ! -name "." ! -name ".." ! -name ".git");do
-  if ask "$dir"; then
-    ln -s "$(realpath "$dir")" ~/${dir}
-  fi
-done 
-'
