@@ -6,7 +6,7 @@ palette = "catppuccin_mocha"
 add_newline = true 
 
 format = """\
-$directory- $git_branch$git_status
+$directory$git_branch$git_status
 $character
 """ 
 
@@ -22,7 +22,7 @@ error_symbol = "[❯](red)"
 [git_branch]
 style = "peach"
 symbol = " "
-format = "[\\[$symbol$branch(:remote_branch)\\]]($style) "
+format = "- [\\[$symbol$branch(:remote_branch)\\]]($style) "
 
 [git_status]
 style = "peach bold"
