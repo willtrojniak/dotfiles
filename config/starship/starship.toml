@@ -1,6 +1,31 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 palette = "catppuccin_mocha"
 
-add_newline = false
+add_newline = true 
+
+format = """\
+$directory- $git_branch$git_status
+$character
+""" 
+
+[directory]
+style = "blue"
+read_only = " "
+read_only_style = "cyan"
+
+[character]
+success_symbol = "[❯](mauve)"
+error_symbol = "[❯](red)"
+
+[git_branch]
+style = "peach"
+symbol = " "
+format = "[\\[$symbol$branch(:remote_branch)\\]]($style) "
+
+[git_status]
+style = "peach bold"
 
 
 [palettes.catppuccin_mocha]

@@ -1,7 +1,7 @@
 if command -v starship >& /dev/null; then
   # TODO Change between bash and zsh
   if [ -f "$HOME/.config/starship/starship.toml" ]; then
-    STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+   export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
   fi
   eval "$(starship init bash)"
 else
