@@ -1,0 +1,40 @@
+src = ""
+dest = "$HOME"
+
+[[groups]]
+  src = "config"
+  dest = ".config"
+
+  [[groups.modules]]
+    src = "alacritty"
+
+  [[groups.modules]]
+    src = "i3"
+
+  [[groups.modules]]
+    src = "i3status"
+
+  [[groups.modules]]
+    src = "iterm2"
+
+  [[groups.modules]]
+    src = "kitty"
+
+  [[groups.modules]]
+    src = "nvim"
+
+  [[groups.modules]]
+    src = "picom"
+
+  [[groups.modules]]
+    src = "rofi"
+
+  [[groups.modules]]
+    src = "starship"
+
+  [[groups.modules]]
+    src = "tmux"
+
+  [[groups.modules]]
+    src = "zathura"
+
