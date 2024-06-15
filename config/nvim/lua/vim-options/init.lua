@@ -61,6 +61,10 @@ vim.keymap.set({'n', 'v'}, '<Right>', '<Nop>')
 vim.keymap.set({'n', 'v'}, '<Up>', '<Nop>')
 vim.keymap.set({'n', 'v'}, '<Down>', '<Nop>')
 
+-- Center cursor on page up and down
+vim.keymap.set({'n', 'v'}, '<C-u>', '<C-u>zz');
+vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz');
+
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
