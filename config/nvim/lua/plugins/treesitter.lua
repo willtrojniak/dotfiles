@@ -16,7 +16,8 @@ return {
         "typescript",
         "tsx",
         "markdown",
-        "markdown_inline"
+        "markdown_inline",
+        "regex"
       },
 
 
