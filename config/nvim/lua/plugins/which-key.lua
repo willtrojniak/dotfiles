@@ -18,9 +18,6 @@ return {
         nav = false,
       },
     },
-    operators = {
-      gc = "Comments"
-    },
     show_help = false,
     -- Custom table for setup
     defaults = {

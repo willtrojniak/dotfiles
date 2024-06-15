@@ -1,11 +1,11 @@
 return {
   "hrsh7th/nvim-cmp",
   version = false,
-  lazy = false,
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
   },
+  event = "VeryLazy",
   opts = function()
     local cmp = require("cmp")
     return {
@@ -21,7 +21,7 @@ return {
       mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<TAB>"] = cmp.mapping.confirm({select = true}),
+        ["<tab>"] = cmp.mapping.confirm({select = true}),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -31,5 +31,4 @@ return {
       }),
     }
   end,
-  config = true,
 }
