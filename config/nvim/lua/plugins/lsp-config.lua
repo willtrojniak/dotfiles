@@ -40,19 +40,21 @@ return {
       }
     },
     config = function()
+      local wk = require("which-key")
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
-          local opts = { buffer = ev.buf }
-
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts);
-          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts);
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts);
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts);
-          vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts);
-          vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts);
-          vim.keymap.set('n', '<leader>co', vim.diagnostic.open_float, opts);
-
+          wk.register({
+            K = {vim.lsp.buf.hover, "hover", buffer = ev.buf},
+            g = {
+              D = {vim.lsp.buf.declaration, "Go to declaration", buffer = ev.buf},
+              d = {vim.lsp.buf.definition, "Go to definition", buffer = ev.buf},
+              i = {vim.lsp.buf.implementation, "Go to implemention", buffer = ev.buf},
+              t = {vim.lsp.buf.type_definition, "Go to type definition", buffer = ev.buf},
+            },
+            ['<leader>ca'] = {vim.lsp.buf.code_action, "View actions", buffer = ev.buf},
+            ['<leader>co'] = {vim.diagnostic.open_float, "Open float", buffer = ev.buf}
+          })
         end,
       })
     end

@@ -14,8 +14,8 @@ return {
     keys = function()
       local builtin = require("telescope.builtin")
       return {
-        { "<leader>,", builtin.buffers, desc = "Switch Buffer" },
-        { "<leader>.", builtin.find_files, desc = "Find Files" },
+        { "<leader>ff", builtin.buffers, desc = "Switch Buffer" },
+        { "<leader>fo", builtin.find_files, desc = "Open File" },
         { "<leader>/", builtin.live_grep, desc = "Live Grep" },
       }
     end,
@@ -29,6 +29,11 @@ return {
         },
         live_grep = {
           theme = "ivy"
+        }
+      },
+      extensions = {
+        ["ui-select"] = {
+          theme = "dropdown"
         }
       }
     },
