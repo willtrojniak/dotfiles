@@ -19,7 +19,21 @@ return {
         { "<leader>/", builtin.live_grep, desc = "Live Grep" },
       }
     end,
-    config = function()
+    opts = {
+      pickers = {
+        buffers = {
+          theme = "cursor"
+        },
+        find_files = {
+          theme = "cursor"
+        },
+        live_grep = {
+          theme = "ivy"
+        }
+      }
+    },
+    config = function(_, opts)
+      require("telescope").setup(opts);
       require("telescope").load_extension("fzf")
     end
   },
