@@ -14,7 +14,9 @@ return {
         "lua",
         "javascript",
         "typescript",
-        "tsx"
+        "tsx",
+        "markdown",
+        "markdown_inline"
       },
 
 
