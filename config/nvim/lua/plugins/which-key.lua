@@ -27,7 +27,8 @@ return {
       ["z"] = {name = "+fold"},
       ["]"] = {name = "+next"},
       ["["] = {name = "+prev"},
-      ["<leader>f"] = {name = "files"}
+      ["<leader>f"] = {name = "+files"},
+      ["<leader>i"] = {name = "+inspect"},
 
     }
   },

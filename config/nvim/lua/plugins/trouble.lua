@@ -1,37 +1,60 @@
 return {
   "folke/trouble.nvim",
-  opts = {}, -- for default options, refer to the configuration section for custom setup.
+  opts = {
+    focus = true,
+    auto_jump = false,
+    indent_guides = true,
+    warn_no_results = false,
+    open_no_results = false,
+    auto_close = true,
+    modes = {
+      lsp_base = {
+        params = {
+          include_current = true
+        }
+      },
+      lsp_references = {
+        auto_refresh = false,
+        params = {
+          include_declaration = false
+        }
+      },
+      symbols = {
+        mode = "lsp_document_symbols",
+        focus = false,
+        win = {
+          position = "right",
+          size = {width = 60 }
+        }
+      }
+    }
+  },
   cmd = "Trouble",
-  keys = {
+    keys = {
     {
-      "<leader>xx",
-      "<cmd>Trouble diagnostics toggle<cr>",
-      desc = "Diagnostics (Trouble)",
+      "<leader>ii",
+      "<cmd>Trouble diagnostics open <cr>",
+      desc = "Issues (Focus)",
     },
     {
-      "<leader>xX",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-      desc = "Buffer Diagnostics (Trouble)",
+      "<leader>iI",
+      "<cmd>Trouble diagnostics open filter.buf=0<cr>",
+      desc = "Buffer Issues (Focus)",
     },
     {
-      "<leader>cs",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
-      desc = "Symbols (Trouble)",
+      "<leader>ir",
+      "<cmd>Trouble lsp_references open auto_jump=false <cr>",
+      desc = "References (Focus)",
     },
     {
-      "<leader>cl",
-      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-      desc = "LSP Definitions / references / ... (Trouble)",
+      "<leader>is",
+      "<cmd>Trouble symbols toggle<cr>",
+      desc = "Symbols",
     },
     {
-      "<leader>xL",
-      "<cmd>Trouble loclist toggle<cr>",
-      desc = "Location List (Trouble)",
-    },
-    {
-      "<leader>xQ",
-      "<cmd>Trouble qflist toggle<cr>",
-      desc = "Quickfix List (Trouble)",
+      "<leader>iS",
+      "<cmd>Trouble symbols open focus=true<cr>",
+      desc = "Symbols (Focus)",
     },
   },
 }

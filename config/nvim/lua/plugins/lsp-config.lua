@@ -52,8 +52,8 @@ return {
               i = {vim.lsp.buf.implementation, "Go to implemention", buffer = ev.buf},
               t = {vim.lsp.buf.type_definition, "Go to type definition", buffer = ev.buf},
             },
-            ['<leader>ca'] = {vim.lsp.buf.code_action, "View actions", buffer = ev.buf},
-            ['<leader>co'] = {vim.diagnostic.open_float, "Open float", buffer = ev.buf}
+            ['<leader>ia'] = {vim.lsp.buf.code_action, "View actions", buffer = ev.buf},
+            ['<leader>io'] = {vim.diagnostic.open_float, "Open float", buffer = ev.buf}
           })
         end,
       })
