@@ -22,10 +22,20 @@ return {
     opts = {
       pickers = {
         buffers = {
-          theme = "cursor"
+          theme = "ivy"
+          -- theme = "cursor",
+          -- layout_config = {
+          --   height = 16,
+          --   width = 120,
+          -- }
         },
         find_files = {
-          theme = "cursor"
+          theme = "ivy"
+          -- theme = "cursor",
+          -- layout_config = {
+          --   height = 16,
+          --   width = 120,
+          -- }
         },
         live_grep = {
           theme = "ivy"
