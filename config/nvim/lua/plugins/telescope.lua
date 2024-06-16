@@ -16,7 +16,8 @@ return {
       return {
         { "<leader>ff", builtin.buffers, desc = "Switch Buffer" },
         { "<leader>fo", builtin.find_files, desc = "Open File" },
-        { "<leader>/", builtin.live_grep, desc = "Live Grep" },
+        { "<leader>/",  builtin.live_grep, desc = "Live Grep" },
+        { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todos" }
       }
     end,
     opts = {
@@ -39,12 +40,12 @@ return {
         },
         live_grep = {
           theme = "ivy"
-        }
+        },
       },
       extensions = {
         ["ui-select"] = {
           theme = "dropdown"
-        }
+        },
       }
     },
     config = function(_, opts)

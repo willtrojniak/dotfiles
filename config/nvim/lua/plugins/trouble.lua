@@ -56,5 +56,15 @@ return {
       "<cmd>Trouble symbols open focus=true<cr>",
       desc = "Symbols (Focus)",
     },
+    {
+      "<leader>it",
+      "<cmd>Trouble todo toggle focus=false<cr>",
+      desc = "TODOs",
+    },
+    {
+      "<leader>iT",
+      "<cmd>Trouble todo open focus=true<cr>",
+      desc = "TODOs (Focus)",
+    },
   },
 }

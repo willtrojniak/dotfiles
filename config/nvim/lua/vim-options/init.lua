@@ -62,8 +62,8 @@ vim.keymap.set({'n', 'v'}, '<Up>', '<Nop>')
 vim.keymap.set({'n', 'v'}, '<Down>', '<Nop>')
 
 -- Center cursor on page up and down
-vim.keymap.set({'n', 'v'}, '<C-u>', '<C-u>zz', {noremap = true});
-vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz', {noremap = true});
+vim.keymap.set({'n', 'v'}, '<C-u>', '<C-u>zz', {noremap = true, desc = "Page up"});
+vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz', {noremap = true, desc = "Page down"});
 
 
 -- Highlight when yanking text
