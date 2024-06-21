@@ -23,8 +23,9 @@ return {
             bg = "BOLD"
           },
           highlight = {
+            before = "fg",
             keyword = "fg",
-            after = "",
+            after = "fg",
           },
           colors = {
             error = { palette.red },
