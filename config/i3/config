@@ -39,6 +39,12 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Media Keys
+exec_always --no-startup-id xmodmap ~/.xmodmaprc
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
+
 # Mod key
 set $mod Mod4
 
@@ -285,7 +291,7 @@ bar {
 exec_always --no-startup-id nitrogen --restore
 
 # Set primary monitor
-exec --no-startup-id xrandr --output HDMI-1 --primary --right-of DP-1
+exec --no-startup-id xrandr --output HDMI-0 --primary --right-of DP-1
 
 # Disable mouse acceleration
 exec --no-startup-id xinput set-prop "Logitech USB Receiver" "libinput Accel Profile Enabled" 0, 1
