@@ -116,8 +116,8 @@ bindsym $mod+space focus mode_toggle
 # Hide borders adjacent to screen edges
 hide_edge_borders both
 default_border none
-gaps inner 24px
-gaps outer 24px
+gaps inner 12px 
+# gaps outer 12px 
 smart_gaps inverse_outer
 
 # focus the parent container
@@ -291,7 +291,7 @@ bar {
 exec_always --no-startup-id nitrogen --restore
 
 # Set primary monitor
-exec --no-startup-id xrandr --output HDMI-0 --primary --right-of DP-1
+exec --no-startup-id xrandr --output HDMI-0 --primary --right-of DP-0
 
 # Disable mouse acceleration
 exec --no-startup-id xinput set-prop "Logitech USB Receiver" "libinput Accel Profile Enabled" 0, 1
