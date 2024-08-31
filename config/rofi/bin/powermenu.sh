@@ -13,7 +13,7 @@ rdialog () {
   rofi -dmenu -i -no-fixed-num-lines -p "Are You Sure? : "
 }
 
-chosen="$(echo -e "$options" | rofi "UP - $uptime" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | rofi "UP - $uptime" -dmenu -selected-row 0 -i)"
 case $chosen in
     $shutdown)
       systemctl poweroff
