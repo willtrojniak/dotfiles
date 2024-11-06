@@ -5,11 +5,13 @@ return {
     vim.o.timeout = true
   end,
   opts = {
-    window = {
-      margin = {0, 0, 0, 0},
-      padding = {1, 1, 1, 1},
+    win = {
+      padding = { 1, 1, 1, 1 },
       border = "none",
-      winblend = 10
+      height = { min = 2, max = 6 },
+      wo = {
+        winblend = 10
+      }
     },
     plugins = {
       presets = {
@@ -21,20 +23,19 @@ return {
     show_help = false,
     -- Custom table for setup
     defaults = {
-      mode = {"n", "v"},
-      ["g"] = {name = "+goto"},
-      ["s"] = {name = "+surround"},
-      ["z"] = {name = "+fold"},
-      ["]"] = {name = "+next"},
-      ["["] = {name = "+prev"},
-      ["<leader>f"] = {name = "+files"},
-      ["<leader>i"] = {name = "+inspect"},
-
+      mode = { "n", "v" },
+      { "g",         group = "goto" },
+      { "s",         group = "surround" },
+      { "z",         group = "fold" },
+      { "]",         group = "next" },
+      { "[",         group = "prev" },
+      { "<leader>f", group = "files" },
+      { "<leader>i", group = "inspect" },
     }
   },
   config = function(_, opts)
     local wk = require("which-key")
     wk.setup(opts)
-    wk.register(opts.defaults)
+    wk.add(opts.defaults)
   end
 }
