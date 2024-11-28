@@ -33,6 +33,9 @@ dest = "$HOME"
     src = "rofi"
 
   [[groups.modules]]
+    src = "sketchybar"
+
+  [[groups.modules]]
     src = "starship"
 
   [[groups.modules]]
