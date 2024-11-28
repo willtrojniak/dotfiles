@@ -6,6 +6,9 @@ dest = "$HOME"
   dest = ".config"
 
   [[groups.modules]]
+    src = "aerospace"
+
+  [[groups.modules]]
     src = "alacritty"
 
   [[groups.modules]]
