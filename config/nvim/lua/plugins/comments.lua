@@ -1,11 +1,5 @@
 return {
   {
-    'echasnovski/mini.comment',
-    version = '*',
-    event = "VeryLazy",
-    opts = {},
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
