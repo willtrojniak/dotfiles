@@ -26,27 +26,16 @@ return {
     opts = {
       pickers = {
         buffers = {
-          theme = "ivy"
+          theme = "ivy",
+          sorting_strategy = "descending",
         },
         find_files = {
-          border = true,
-          borderchars = {
-            -- prompt = { " " },
-            results = { " " },
-            -- preview = { " " },
-          },
+          theme = "ivy",
           sorting_strategy = "descending",
-          layout_strategy = "horizontal",
-          layout_config = {
-            anchor = "S",
-            height = vim.o.lines / 2,
-            width = vim.o.columns,
-            prompt_position = "top",
-            preview_width = 0.6
-          }
         },
         live_grep = {
-          theme = "ivy"
+          theme = "ivy",
+          sorting_strategy = "descending",
         },
       },
       extensions = {
