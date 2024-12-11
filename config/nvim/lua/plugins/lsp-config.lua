@@ -44,22 +44,19 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
-          wk.register({
-            K = { vim.lsp.buf.hover, "hover", buffer = ev.buf },
-            g = {
-              D = { vim.lsp.buf.declaration, "Go to declaration", buffer = ev.buf },
-              d = { vim.lsp.buf.definition, "Go to definition", buffer = ev.buf },
-              i = { vim.lsp.buf.implementation, "Go to implemention", buffer = ev.buf },
-              t = { vim.lsp.buf.type_definition, "Go to type definition", buffer = ev.buf },
-            },
-            ['<leader>ia'] = { vim.lsp.buf.code_action, "View actions", buffer = ev.buf },
-            ['<leader>io'] = { vim.diagnostic.open_float, "Open float", buffer = ev.buf }
+          wk.add({
+            { "K",          vim.lsp.buf.hover,           buffer = ev.buf, desc = "Hover" },
+            { "gD",         vim.lsp.buf.declaration,     buffer = ev.buf, desc = "Go to declaration" },
+            { "gd",         vim.lsp.buf.definition,      buffer = ev.buf, desc = "Go to definition" },
+            { "gi",         vim.lsp.buf.implementation,  buffer = ev.buf, desc = "Go to implementation" },
+            { "gt",         vim.lsp.buf.type_definition, buffer = ev.buf, desc = "Go to type definition" },
+            { "<leader>ia", vim.lsp.buf.code_action,     buffer = ev.buf, desc = "View actions" },
+            { "<leader>io", vim.lsp.buf.open_float,      buffer = ev.buf, desc = "Open float" },
           })
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if not client then return end
 
           if client.supports_method('textDocument/formatting', 0) then
-            local group = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = ev.buf,
               callback = function()
