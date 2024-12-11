@@ -56,7 +56,7 @@ return {
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if not client then return end
 
-          if client.supports_method('textDocument/formatting', 0) then
+          if client.supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = ev.buf,
               callback = function()
