@@ -27,8 +27,8 @@ return {
           -- Change type
           added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
           modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-          deleted   = "✖",-- this can only be used in the git_status source
-          renamed   = "󰁕",-- this can only be used in the git_status source
+          deleted   = "✖", -- this can only be used in the git_status source
+          renamed   = "󰁕", -- this can only be used in the git_status source
           -- Status type
           untracked = "?",
           ignored   = "",
@@ -54,12 +54,18 @@ return {
   },
   cmd = "Neotree",
   keys = function()
-    local neotree = require("neo-tree.command")
-    return{
-      { '<leader>fe', function() neotree.execute({action='focus', source='filesystem', position='float', reveal=true}) end, desc = "Open File Tree Explorer" },
-      { '<leader>fg', function() neotree.execute({action='focus', source='git_status', position='float', reveal=true}) end, desc = "Open Git Tree Explorer" },
-      { '<leader>fb', function() neotree.execute({action='focus', source='buffers', position='float', reveal=true}) end, desc = "Open Buffer Explorer"},
+    return {
+      { '<leader>fe', desc = "Open File Tree Explorer" },
+      { '<leader>fg', desc = "Open Git Tree Explorer" },
     }
   end,
+  config = function(_, opts)
+    require("neo-tree").setup(opts)
+    local neotree = require("neo-tree.command")
+    local wk = require("which-key")
+    wk.add({
+      { '<leader>fe', function() neotree.execute({ action = 'focus', source = 'filesystem', position = 'float', reveal = true }) end, desc = "Open File Tree Explorer" },
+      { '<leader>fg', function() neotree.execute({ action = 'focus', source = 'git_status', position = 'float', reveal = true }) end, desc = "Open Git Tree Explorer" },
+    })
+  end,
 }
-
