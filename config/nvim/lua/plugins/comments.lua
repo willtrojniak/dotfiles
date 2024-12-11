@@ -7,7 +7,7 @@ return {
     },
     event = "VeryLazy",
     keys = {
-      { "<leader>ft", "<cmd>TodoTelescope theme=ivy<cr>", "Comments" }
+      { "<leader>ft", "<cmd>TodoTelescope theme=ivy<cr>", desc = "Todos" }
     },
     opts = function()
       local palette = require("catppuccin.palettes").get_palette("mocha")
