@@ -55,14 +55,18 @@ return {
             ['<leader>ia'] = { vim.lsp.buf.code_action, "View actions", buffer = ev.buf },
             ['<leader>io'] = { vim.diagnostic.open_float, "Open float", buffer = ev.buf }
           })
-          local group = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            vim.api.nvim_clear_autocmds({ group = group, buffer = ev.buf }),
-            group = group,
-            callback = function()
-              vim.lsp.buf.format({ async = false })
-            end
-          })
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if not client then return end
+
+          if client.supports_method('textDocument/formatting', 0) then
+            local group = vim.api.nvim_create_augroup('LspFormatting', { clear = false })
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              buffer = ev.buf,
+              callback = function()
+                vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
+              end,
+            })
+          end
         end,
       })
     end
