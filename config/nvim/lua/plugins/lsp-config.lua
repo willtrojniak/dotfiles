@@ -42,7 +42,6 @@ return {
     config = function()
       local wk = require("which-key")
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
           wk.add({
             { "K",          vim.lsp.buf.hover,           buffer = ev.buf, desc = "Hover" },
@@ -51,7 +50,7 @@ return {
             { "gi",         vim.lsp.buf.implementation,  buffer = ev.buf, desc = "Go to implementation" },
             { "gt",         vim.lsp.buf.type_definition, buffer = ev.buf, desc = "Go to type definition" },
             { "<leader>ia", vim.lsp.buf.code_action,     buffer = ev.buf, desc = "View actions" },
-            { "<leader>io", vim.lsp.buf.open_float,      buffer = ev.buf, desc = "Open float" },
+            { "<leader>io", vim.diagnostic.open_float,   buffer = ev.buf, desc = "Open float" },
           })
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if not client then return end
