@@ -31,7 +31,6 @@ return {
       { "[",         group = "prev" },
       { "<leader>f", group = "files" },
       { "<leader>i", group = "inspect" },
-      { "<leader>s", group = "surroundings" },
     }
   },
   config = function(_, opts)
