@@ -53,12 +53,10 @@ return {
     },
   },
   cmd = "Neotree",
-  keys = function()
-    return {
-      { '<leader>fe', desc = "Open File Tree Explorer" },
-      { '<leader>fg', desc = "Open Git Tree Explorer" },
-    }
-  end,
+  keys = {
+    { '<leader>fe', desc = "Open File Tree Explorer" },
+    { '<leader>fg', desc = "Open Git Tree Explorer" },
+  },
   config = function(_, opts)
     require("neo-tree").setup(opts)
     local neotree = require("neo-tree.command")
