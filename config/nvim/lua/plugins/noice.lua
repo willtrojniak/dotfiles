@@ -4,25 +4,24 @@ return {
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
-    "hrsh7th/nvim-cmp"
   },
   opts = {
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
-        ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        ["cmp.entry.get_documentation"] = true, -- for hrsh7th/nvim-cmp
       },
     },
     cmdline = {
       enabled = true, -- enables the Noice cmdline UI
       view = "cmdline_popup",
       format = {
-        search_down = {view = "cmdline"},
-        search_up = {view = "cmdline"},
+        search_down = { view = "cmdline" },
+        search_up = { view = "cmdline" },
       },
     },
-    notify =  {
+    notify = {
       enabled = true,
       view = "mini"
     },
@@ -50,20 +49,20 @@ return {
         },
         border = {
           style = "none",
-          padding = {1, 2},
+          padding = { 1, 2 },
         },
         size = {
           width = 60,
           height = "auto",
         },
         win_options = {
-          winhighlight="NormalFloat:NormalFloat,FloatBorder:FloatBorder"
+          winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder"
         }
       },
       popup = {
         border = {
           style = "single",
-          padding = {0, 1},
+          padding = { 0, 1 },
         },
         size = {
           width = "90%"
@@ -75,7 +74,7 @@ return {
         position = "auto",
         border = {
           style = "none",
-          padding = {1, 2},
+          padding = { 1, 2 },
         },
         size = {
           width = 24,
@@ -83,13 +82,13 @@ return {
           max_height = 6
         },
         win_options = {
-          winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder"}
+          winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" }
         }
       },
       hover = {
         border = {
           style = "single",
-          padding = {0, 1}
+          padding = { 0, 1 }
         },
         position = {
           row = 2,

@@ -5,7 +5,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
   },
-  event = "VeryLazy",
+  event = "LspAttach",
   opts = function()
     local cmp = require("cmp")
     return {
