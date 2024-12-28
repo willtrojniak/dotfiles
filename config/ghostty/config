@@ -14,3 +14,5 @@ title = " "
 window-decoration = false
 window-padding-x = 12
 window-padding-y = 8
+
+confirm-close-surface = false
