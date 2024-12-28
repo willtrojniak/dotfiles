@@ -12,6 +12,9 @@ dest = "$HOME"
     src = "alacritty"
 
   [[groups.modules]]
+    src = "ghostty"
+
+  [[groups.modules]]
     src = "i3"
 
   [[groups.modules]]
