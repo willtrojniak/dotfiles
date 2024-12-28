@@ -31,7 +31,7 @@ outer.top = 8
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
-alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
+alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
 # i3 wraps focus by default
 alt-h = 'focus left'
