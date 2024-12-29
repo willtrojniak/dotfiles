@@ -4,7 +4,7 @@ font-family = FiraCode Nerd Font Mono Reg
 font-family-bold = FiraCode Nerd Font Mono Bold
 font-family-italic = FiraCode Nerd Font Mono Light
 
-font-size = 14
+font-size = 15
 
 # Disable ligatures
 font-feature = -calt
