@@ -6,14 +6,15 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
-      "williamboman/mason.nvim"
+      "williamboman/mason.nvim",
+      "saghen/blink.cmp",
     },
     opts = {
       -- ensure_installed = lspServers,
       automatic_installation = true,
       handlers = {
         function(server_name)
-          local capabilities = require("cmp_nvim_lsp").default_capabilities()
+          local capabilities = require("blink.cmp").get_lsp_capabilities({})
           require("lspconfig")[server_name].setup({ capabilities = capabilities })
         end
       }

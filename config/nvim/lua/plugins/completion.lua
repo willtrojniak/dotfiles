@@ -1,35 +1,27 @@
 return {
-  "hrsh7th/nvim-cmp",
-  version = false,
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "saadparwaiz1/cmp_luasnip",
+  {
+    "saghen/blink.cmp",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+    version = "*",
+
+    opts = {
+      keymap = { preset = 'super-tab' },
+      appearance = {
+        nerd_font_variant = 'mono',
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+          markdown = {
+            name = "RenderMarkdown",
+            module = "render-markdown.integ.blink",
+            fallbacks = { "lsp" },
+          }
+        }
+      },
+    },
+    opts_extend = { "sources.default" }
   },
-  event = "LspAttach",
-  opts = function()
-    local cmp = require("cmp")
-    return {
-      snippet = {
-        expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-        end
-      },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<tab>"] = cmp.mapping.confirm({ select = true }),
-      }),
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "render-markdown" }
-      }, {
-        { name = "buffer" },
-      }),
-    }
-  end,
 }
