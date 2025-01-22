@@ -24,6 +24,11 @@ return {
       }
     end,
     opts = {
+      defaults = {
+        file_ignore_patterns = {
+          "vendor/",
+        },
+      },
       pickers = {
         buffers = {
           theme = "ivy",
