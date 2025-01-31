@@ -63,7 +63,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id ghostty 
 
 # kill focused window
 bindsym $mod+q kill
@@ -291,13 +291,13 @@ bar {
 exec_always --no-startup-id nitrogen --restore
 
 # Set primary monitor
-exec --no-startup-id xrandr --output HDMI-0 --primary --right-of DP-0
+exec --no-startup-id xrandr --output HDMI-0 --primary --left-of DP-0
 
 # Disable mouse acceleration
 exec --no-startup-id xinput set-prop "Logitech USB Receiver" "libinput Accel Profile Enabled" 0, 1
 
 # Transparent windows
-exec --no-startup-id picom -b
+exec_always --no-startup-id picom -b --experimental-backends
 
 # Open Spotify on startup
 exec --no-startup-id spotify
