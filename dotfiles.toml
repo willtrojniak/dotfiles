@@ -7,42 +7,56 @@ dest = ".config"
 
 [[groups.modules]]
 src = "aerospace"
+tags = ["macOS", "wm"]
 
 [[groups.modules]]
 src = "alacritty"
+tags = ["terminal"]
 
 [[groups.modules]]
 src = "ghostty"
+tags = ["core", "terminal"]
 
 [[groups.modules]]
 src = "i3"
+tags = ["linux", "wm"]
 
 [[groups.modules]]
 src = "i3status"
+tags = ["linux", "statusbar"]
 
 [[groups.modules]]
 src = "iterm2"
+tags = ["terminal"]
 
 [[groups.modules]]
 src = "kitty"
+tags = ["terminal"]
 
 [[groups.modules]]
 src = "nvim"
+tags = ["core", "editor"]
 
 [[groups.modules]]
 src = "picom"
+tags = ["linux"]
 
 [[groups.modules]]
 src = "rofi"
+tags = ["linux"]
 
 [[groups.modules]]
 src = "sketchybar"
+tags = ["macOS", "statusbar"]
 
 [[groups.modules]]
 src = "starship"
+tags = ["core", "terminal"]
 
 [[groups.modules]]
 src = "tmux"
+tags = ["core", "terminal"]
 
 [[groups.modules]]
 src = "zathura"
+tags = ["editor"]
