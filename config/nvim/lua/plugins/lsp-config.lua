@@ -21,11 +21,19 @@ return {
     },
   },
   {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      }
+    }
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mason.nvim",
-      "mason-lspconfig.nvim",
-      "folke/neodev.nvim"
+      "mason-lspconfig.nvim"
     },
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {
