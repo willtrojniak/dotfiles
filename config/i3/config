@@ -297,7 +297,7 @@ exec --no-startup-id xrandr --output HDMI-0 --primary --left-of DP-0
 exec --no-startup-id xinput set-prop "Logitech USB Receiver" "libinput Accel Profile Enabled" 0, 1
 
 # Transparent windows
-exec_always --no-startup-id picom -b --experimental-backends
+exec_always --no-startup-id picom -b
 
 # Open Spotify on startup
 exec --no-startup-id spotify
