@@ -1,24 +1,15 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     config = true,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "saghen/blink.cmp",
     },
-    opts = {
-      -- ensure_installed = lspServers,
-      automatic_installation = true,
-      handlers = {
-        function(server_name)
-          local capabilities = require("blink.cmp").get_lsp_capabilities({})
-          require("lspconfig")[server_name].setup({ capabilities = capabilities })
-        end
-      }
-    },
+    opts = {},
   },
   {
     "folke/lazydev.nvim",
@@ -50,6 +41,9 @@ return {
     },
     config = function()
       local wk = require("which-key")
+
+
+
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(ev)
           wk.add({
@@ -64,6 +58,9 @@ return {
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if not client then return end
 
+          if client.name == "clangd" then
+
+          end
           if client.supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = ev.buf,
