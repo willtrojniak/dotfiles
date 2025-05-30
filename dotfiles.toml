@@ -18,6 +18,10 @@ src = "ghostty"
 tags = ["core", "terminal"]
 
 [[groups.modules]]
+src = "git"
+tags = ["core"]
+
+[[groups.modules]]
 src = "i3"
 tags = ["linux", "wm"]
 

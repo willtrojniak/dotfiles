@@ -1,0 +1,37 @@
+[user]
+	name = Will Trojniak
+	email = william.trojniak@gmail.com
+
+[alias]
+  lg = log --all --graph --oneline
+
+[core]
+  whitespace = error
+
+[advice]
+  addEmptyPathspec = false
+  pushNonFastForward = false
+  statusHints = false
+
+[status]
+  showStash = true
+  showUntrackedFiles = all
+  short = true
+
+[commit]
+  template = ~/.config/git/template
+
+[push]
+  autoSetupRemote = true
+  
+[pull]
+  rebase = true
+
+[interactive]
+  singlekey = true
+
+[url "git@github.com:WilliamTrojniak/"]
+  insteadOf = "wt:"
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
