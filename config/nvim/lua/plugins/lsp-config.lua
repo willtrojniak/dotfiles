@@ -1,3 +1,22 @@
+--- Uses the lsp client to get the corresponding source/header file open it
+---
+--- @param client vim.lsp.Client
+--- @param bufnr integer
+local function switch_source_header(client, bufnr)
+  local method_name = 'textDocument/switchSourceHeader'
+  local params = vim.lsp.util.make_text_document_params(bufnr)
+  client:request(method_name, params, function(err, result)
+    if err then
+      error(tostring(err))
+    end
+    if not result then
+      vim.notify('corresponding file cannot be determined')
+      return
+    end
+    vim.cmd.edit(vim.uri_to_fname(result))
+  end, bufnr)
+end
+
 return {
   {
     "mason-org/mason.nvim",
@@ -41,9 +60,6 @@ return {
     },
     config = function()
       local wk = require("which-key")
-
-
-
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(ev)
           wk.add({
@@ -57,16 +73,17 @@ return {
           })
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if not client then return end
-
-          if client.name == "clangd" then
-
-          end
-          if client.supports_method('textDocument/formatting') then
+          if client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = ev.buf,
               callback = function()
                 vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
               end,
+            })
+          end
+          if client:supports_method('textDocument/switchSourceHeader') then
+            wk.add({
+              { "go", function() switch_source_header(client, 0) end, buffer = ev.buf, desc = 'Switch to source/header' }
             })
           end
         end,
