@@ -19,7 +19,7 @@ return {
       },
       win_options = {
         conceallevel = { default = vim.o.conceallevel, rendered = 3 },
-        concealcursor = { default = vim.o.concealcursor, rendered = "n" },
+        concealcursor = { default = vim.o.concealcursor, rendered = "nc" },
       },
     },
     ft = { 'markdown' }
