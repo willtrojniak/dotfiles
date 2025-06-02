@@ -16,7 +16,11 @@ return {
     opts = {
       anti_conceal = {
         enabled = false,
-      }
+      },
+      win_options = {
+        conceallevel = { default = vim.o.conceallevel, rendered = 3 },
+        concealcursor = { default = vim.o.concealcursor, rendered = "n" },
+      },
     },
     ft = { 'markdown' }
   }
