@@ -14,7 +14,9 @@ return {
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
-
+      anti_conceal = {
+        enabled = false,
+      }
     },
     ft = { 'markdown' }
   }
