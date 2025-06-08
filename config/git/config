@@ -7,6 +7,7 @@
 
 [core]
   whitespace = error
+  excludesFile = ~/.config/git/ignore
 
 [advice]
   addEmptyPathspec = false
