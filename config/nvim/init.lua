@@ -24,7 +24,7 @@ local lazyOptions = {
   },
   dev = {
     path = "~/dev/plugins/nvim/",
-    patterns = { "williamtrojniak" },
+    patterns = { "willtrojniak" },
     fallback = true
   },
   install = {

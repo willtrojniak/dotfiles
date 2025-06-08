@@ -31,7 +31,7 @@
 [interactive]
   singlekey = true
 
-[url "git@github.com:WilliamTrojniak/"]
+[url "git@github.com:willtrojniak/"]
   insteadOf = "wt:"
 
 [url "git@github.com:"]

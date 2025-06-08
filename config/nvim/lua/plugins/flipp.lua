@@ -1,7 +1,7 @@
 ---@module "lazy"
 ---@type LazyPluginSpec
 return {
-  "williamtrojniak/flipp.nvim",
+  "willtrojniak/flipp.nvim",
   version = "*",
   ft = { "c", "cpp" },
   ---@module 'flipp'

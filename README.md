@@ -12,7 +12,7 @@ My personal dotfiles repository, heavily inspired by many.
 ## Setup
 
 ```bash
-git clone https://github.com/williamtrojniak/dotfiles
+git clone https://github.com/willtrojniak/dotfiles
 cd dotfiles
 ./install.sh
 ```
