@@ -24,13 +24,13 @@ return {
         focus = false,
         win = {
           position = "right",
-          size = {width = 60 }
+          size = { width = 60 }
         }
       }
     }
   },
   cmd = "Trouble",
-    keys = {
+  keys = {
     {
       "<leader>ii",
       "<cmd>Trouble diagnostics open <cr>",

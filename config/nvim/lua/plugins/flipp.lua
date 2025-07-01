@@ -15,7 +15,7 @@ return {
     flipp.setup(opts)
 
     vim.keymap.set({ "n", "v" }, "<leader>gd",
-      flipp.get_fully_qualified_undefined_selected_declarations,
+      "<cmd>FlippGenerate<cr>",
       { desc = "Generate definitions" })
   end
 }

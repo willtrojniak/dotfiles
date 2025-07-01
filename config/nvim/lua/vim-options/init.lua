@@ -52,24 +52,24 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Decrease update time
 set.updatetime = 250
 
--- Decrease mapped sequence wait time
-set.timeoutlen = 300
+-- Turn off mapped sequence timeout
+set.timeout = false
 
 -- Remove arrow key functionality
-vim.keymap.set({'n', 'v'}, '<Left>', '<Nop>')
-vim.keymap.set({'n', 'v'}, '<Right>', '<Nop>')
-vim.keymap.set({'n', 'v'}, '<Up>', '<Nop>')
-vim.keymap.set({'n', 'v'}, '<Down>', '<Nop>')
+vim.keymap.set({ 'n', 'v' }, '<Left>', '<Nop>')
+vim.keymap.set({ 'n', 'v' }, '<Right>', '<Nop>')
+vim.keymap.set({ 'n', 'v' }, '<Up>', '<Nop>')
+vim.keymap.set({ 'n', 'v' }, '<Down>', '<Nop>')
 
 -- Center cursor on page up and down
-vim.keymap.set({'n', 'v'}, '<C-u>', '<C-u>zz', {noremap = true, desc = "Page up"});
-vim.keymap.set({'n', 'v'}, '<C-d>', '<C-d>zz', {noremap = true, desc = "Page down"});
+vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz', { noremap = true, desc = "Page up" });
+vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz', { noremap = true, desc = "Page down" });
 
 
 -- Highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('highlight-yank', {clear = true}),
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,

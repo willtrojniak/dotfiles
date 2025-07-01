@@ -1,9 +1,6 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-  end,
   opts = {
     win = {
       padding = { 1, 1, 1, 1 },

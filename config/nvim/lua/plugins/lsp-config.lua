@@ -1,17 +1,5 @@
 return {
   {
-    "mason-org/mason.nvim",
-    config = true,
-  },
-  {
-    "mason-org/mason-lspconfig.nvim",
-    dependencies = {
-      "mason-org/mason.nvim",
-      "saghen/blink.cmp",
-    },
-    opts = {},
-  },
-  {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
@@ -21,12 +9,23 @@ return {
     }
   },
   {
+    "mason-org/mason.nvim",
+    opts = {},
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig"
+    },
+    opts = {},
+    event = { "BufReadPre", "BufWritePre", "BufNewFile" },
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "mason.nvim",
-      "mason-lspconfig.nvim"
+      "saghen/blink.cmp",
     },
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {
       diagnostics = {
         underline = true,
