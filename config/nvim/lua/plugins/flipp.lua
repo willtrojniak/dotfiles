@@ -10,7 +10,7 @@ return {
 
   ---@module 'flipp'
   ---@param opts flipp.Opts
-  config = function(opts)
+  config = function(_, opts)
     local flipp = require('flipp')
     flipp.setup(opts)
 
