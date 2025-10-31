@@ -7,7 +7,7 @@ add_newline = true
 
 format = """\
 $directory$git_branch$git_status
-$character
+$python$character
 """ 
 
 [directory]
@@ -26,6 +26,10 @@ format = "- [\\[$symbol$branch(:remote_branch)\\]]($style) "
 
 [git_status]
 style = "peach bold"
+
+[python]
+format = '[(\($virtualenv\) )]($style)'
+style = 'yellow'
 
 
 [palettes.catppuccin_mocha]
