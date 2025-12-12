@@ -22,6 +22,11 @@ src = "git"
 tags = ["core"]
 
 [[groups.modules]]
+src = "hypr"
+name = "hyprland"
+tags = ["linux", "wm"]
+
+[[groups.modules]]
 src = "i3"
 tags = ["linux", "wm"]
 
