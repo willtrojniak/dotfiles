@@ -67,5 +67,9 @@ src = "tmux"
 tags = ["core", "terminal"]
 
 [[groups.modules]]
+src = "waybar"
+tags = ["linux", "statusbar"]
+
+[[groups.modules]]
 src = "zathura"
 tags = ["editor"]

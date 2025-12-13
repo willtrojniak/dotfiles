@@ -1,0 +1,63 @@
+// -*- mode: jsonc -*-
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "spacing": 8, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "clock",
+    "clock#date"
+  ],
+  "bluetooth": {
+    "controller": "",
+    "on-click": "",
+    "format": "󰂯",
+    "format-off": "󰂯",
+    "format-no-controller": "󰂯 Missing controller",
+    "tooltip-format-connected": "Connected: {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}"
+  },
+  "clock": {
+    "interval": 60,
+    "format": "{:%I:%M %p}",
+    "tooltip": false
+  },
+  "clock#date": {
+    "interval": 60,
+    "format": "{:%b %e, %Y}",
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "{essid} ",
+    "tooltip-format-wifi": "Strength: {signalStrength}%",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "Disconnected ⚠"
+  },
+  "hyprland/workspaces": {
+    "format": "{name}"
+  },
+  "hyprland/window": {
+    "swap-icon-label": true,
+    "format": "{initialTitle}",
+    "separate-outputs": true
+  }
+  // "custom/power": {
+  //   "format": "⏻ ",
+  //   "tooltip": false,
+  //   "menu": "on-click",
+  //   "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+  //   "menu-actions": {
+  //     "shutdown": "shutdown",
+  //     "reboot": "reboot",
+  //     "suspend": "systemctl suspend",
+  //     "hibernate": "systemctl hibernate"
+  //   },
+  // }
+}
