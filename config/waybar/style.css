@@ -4,10 +4,14 @@
 }
 
 window#waybar {
-    background-color: transparent;
+    background-color: #11111b;
     color: #cdd6f4;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: .2s;
+}
+
+window#waybar.empty {
+  background-color: transparent;
 }
 
 tooltip {
