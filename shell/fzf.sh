@@ -1,4 +1,7 @@
-eval "$(fzf --bash)"
+if command -v fzf 2>&1 >/dev/null 
+then
+  eval "$(fzf --bash)"
+fi
 
 if command -v fd 2>&1 >/dev/null
 then
