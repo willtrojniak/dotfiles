@@ -54,7 +54,8 @@ button {
 
 #bluetooth,
 #clock,
-#network {
+#network,
+#wireplumber {
     padding: 0px 8px;
     color: #cdd6f4;
     border-bottom: 1px solid #b4befe;

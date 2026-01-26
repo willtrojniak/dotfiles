@@ -11,6 +11,7 @@
   "modules-center": [],
   "modules-right": [
     "bluetooth",
+    "wireplumber",
     "network",
     "clock",
     "clock#date"
@@ -19,7 +20,7 @@
     "controller": "",
     "on-click": "",
     "format": "󰂯",
-    "format-off": "󰂯",
+    "format-off": "",
     "format-no-controller": "󰂯 Missing controller",
     "tooltip-format-connected": "Connected: {device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}"
@@ -47,6 +48,16 @@
     "swap-icon-label": true,
     "format": "{initialTitle}",
     "separate-outputs": true
+  },
+  "wireplumber": {
+    "format": "{volume}% <big>{icon}</big>",
+    // "format-muted": "",
+    "on-click": "",
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾",
+    ]
   }
   // "custom/power": {
   //   "format": "⏻ ",
