@@ -50,6 +50,7 @@ return {
             { "gt",         vim.lsp.buf.type_definition, buffer = ev.buf, desc = "Go to type definition" },
             { "<leader>ia", vim.lsp.buf.code_action,     buffer = ev.buf, desc = "View actions" },
             { "<leader>io", vim.diagnostic.open_float,   buffer = ev.buf, desc = "Open float" },
+            { "<leader>rr", vim.lsp.buf.rename,          buffer = ev.buf, desc = "Rename occurrences" }
           })
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if not client then return end
