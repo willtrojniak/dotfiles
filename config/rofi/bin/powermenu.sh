@@ -1,12 +1,9 @@
 #!/usr/bin/bash
 
-lock="    Lock"
-suspend="󰒲    Sleep"
-logout="󰍃    Logout"
 reboot="󰜉    Restart"
 shutdown="⏻    Shutdown"
 
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$shutdown\n$reboot"
 
 # Ask for confirmation
 rdialog () {
@@ -21,21 +18,6 @@ case $chosen in
     $reboot)
       systemctl reboot
       ;;
-    $lock)
-      sh $HOME/.local/bin/lock
-      ;;
-    $suspend)
-      mpc -q pause
-      amixer set Master mute
-      sh $HOME/.local/bin/lock
-      systemctl suspend
-      ;;
-    $logout)
-      bspc quit
-      ;;
     *)
-
-      echo $chosen
-      ;;
 esac
 
