@@ -1,19 +1,18 @@
 #!/usr/bin/bash
 
-lock="    Lock"
-suspend="󰒲    Sleep"
-logout="󰍃    Logout"
 reboot="󰜉    Restart"
 shutdown="⏻    Shutdown"
 
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$shutdown\n$reboot"
+options_count=$(wc -l <<< options)
+options_count=$(($options_count + 2))
 
 # Ask for confirmation
 rdialog () {
   rofi -dmenu -i -no-fixed-num-lines -p "Are You Sure? : "
 }
 
-chosen="$(echo -e "$options" | rofi "UP - $uptime" -dmenu -selected-row 0 -i)"
+chosen="$(echo -e "$options" | rofi "UP - $uptime" -dmenu -p "Power Menu" -l $options_count -selected-row -1 -i)"
 case $chosen in
     $shutdown)
       systemctl poweroff
@@ -21,21 +20,6 @@ case $chosen in
     $reboot)
       systemctl reboot
       ;;
-    $lock)
-      sh $HOME/.local/bin/lock
-      ;;
-    $suspend)
-      mpc -q pause
-      amixer set Master mute
-      sh $HOME/.local/bin/lock
-      systemctl suspend
-      ;;
-    $logout)
-      bspc quit
-      ;;
     *)
-
-      echo $chosen
-      ;;
 esac
 
