@@ -30,7 +30,8 @@ return {
           test = { palette.rosewater }
         },
         keywords = {
-          DEPRECATED = { icon = "󱡤 ", color = "warning" }
+          DEPRECATED = { icon = "󱡤 ", color = "warning" },
+          NOTE = { icon = " ", color = "info" }
         }
       }
     end,
