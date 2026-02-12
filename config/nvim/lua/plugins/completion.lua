@@ -1,11 +1,11 @@
 return {
   {
     "saghen/blink.cmp",
+    event = "VeryLazy",
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
     version = "*",
-
     opts = {
       keymap = { preset = 'super-tab' },
       appearance = {

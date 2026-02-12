@@ -36,6 +36,7 @@ return {
     Lua = {
       codeLens = { enable = true },
       hint = { enable = true, semicolon = 'Disable' },
+      runtime = { pathStrict = false },
     },
   },
 }
