@@ -1,10 +1,14 @@
+-- Enable all lsp configurations in lsp directory
 local lsp_configs = {}
 
 for _, f in pairs(vim.api.nvim_get_runtime_file('lsp/*.lua', true)) do
   local server_name = vim.fn.fnamemodify(f, ':t:r')
   table.insert(lsp_configs, server_name)
 end
+vim.lsp.enable(lsp_configs)
 
+
+-- Neovim diagnostic configurations
 vim.diagnostic.config({
   virtual_lines = false,
   virtual_text = true,
@@ -18,8 +22,8 @@ vim.diagnostic.config({
   }
 })
 
-vim.lsp.enable(lsp_configs)
 
+-- Callback on lsp client attach
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
@@ -43,3 +47,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+-- Middleware to use rounded style on all lsp floating windows
+local original_open_float = vim.lsp.util.open_floating_preview
+local function open_floating_preview(contents, syntax, opts)
+  opts = opts or {}
+
+  opts.border = opts.border or 'rounded'
+  return original_open_float(contents, syntax, opts)
+end
+vim.lsp.util.open_floating_preview = open_floating_preview
