@@ -22,8 +22,8 @@ set inputbar-fg			          "#CDD6F4"
 set inputbar-bg 		          "#313244"
 
 set recolor                   "true"
-set recolor-lightcolor		    "#1E1E2E"
-set recolor-darkcolor		      "#CDD6F4"
+set recolor-darkcolor		      "#1E1E2E"
+set recolor-lightcolor		    "#f5e0dc"
 
 set index-fg			            "#CDD6F4"
 set index-bg			            "#1E1E2E"
