@@ -6,12 +6,13 @@ return {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
+  ---@module 'neo-tree'
+  ---@type neotree.Config
   opts = {
     close_if_last_window = true, -- close Neo-Tree if it is the last buffer left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
     enable_diagnostics = true,
-    enable_normal_mode_for_inputs = true,
     sort_case_insensitive = true,
     default_component_configs = {
       diagnostics = {
@@ -51,6 +52,16 @@ return {
         enabled = true,
       },
     },
+    event_handlers = {
+      {
+        event = "neo_tree_popup_input_ready",
+        ---@param args { bufnr: integer, winid: integer }
+        handler = function(args)
+          vim.cmd("stopinsert")
+          vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
+        end,
+      }
+    }
   },
   cmd = "Neotree",
   keys = {
