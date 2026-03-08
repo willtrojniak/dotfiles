@@ -32,7 +32,18 @@ return {
         keywords = {
           DEPRECATED = { icon = "󱡤 ", color = "warning" },
           NOTE = { icon = " ", color = "info" }
-        }
+        },
+        search = {
+          command = "rg",
+          args = {
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--glob=!**/dependencies/**"
+          },
+        },
       }
     end,
   }
