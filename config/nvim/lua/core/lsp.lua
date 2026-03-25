@@ -24,6 +24,11 @@ vim.diagnostic.config({
 
 
 -- Callback on lsp client attach
+vim.g.lspFormat = true
+vim.api.nvim_create_user_command('LspToggleFormat', function()
+  vim.g.lspFormat = not vim.g.lspFormat
+end, { desc = "Toggle LSP Autoformatting" })
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     vim.keymap.set({ "n", "v" }, "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
@@ -41,7 +46,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = ev.buf,
         callback = function()
-          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
+          if vim.g.lspFormat then
+            vim.lsp.buf.format({ bufnr = ev.buf, id = client.id })
+          end
         end,
       })
     end
