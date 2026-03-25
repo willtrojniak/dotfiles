@@ -116,6 +116,9 @@ return {
   },
   settings = {
     ['rust-analyzer'] = {
+      rustc = {
+        source = "discover"
+      },
       lens = {
         debug = { enable = true },
         enable = true,
