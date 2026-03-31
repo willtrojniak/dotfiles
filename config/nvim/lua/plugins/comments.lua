@@ -3,12 +3,8 @@ return {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
     },
     event = "VeryLazy",
-    keys = {
-      { "<leader>ft", "<cmd>TodoTelescope theme=ivy<cr>", desc = "Todos" }
-    },
     opts = function()
       local palette = require("catppuccin.palettes").get_palette("mocha")
       return {

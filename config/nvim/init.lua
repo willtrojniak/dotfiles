@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("core.lsp")
+require("core.ui2")
 
 ---@module "lazy"
 ---@type LazyConfig
